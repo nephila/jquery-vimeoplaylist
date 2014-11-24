@@ -32,9 +32,11 @@
             player.addEvent('pause', onPause);
             player.addEvent('finish', onFinish);
             player.addEvent('playProgress', onPlayProgress);
-            player.api('play');
-            if (firstPlay)
-                player.api('seekTo', settings.startTime);
+            if (! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                player.api('play');
+                if (firstPlay)
+                    player.api('seekTo', settings.startTime);
+            }
         });
 
         $('button').bind('click', function() {
