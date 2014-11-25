@@ -31,13 +31,13 @@
         player.addEvent('ready', function() {
             player.addEvent('pause', onPause);
             player.addEvent('playProgress', onPlayProgress);
+            player.addEvent('finish', onFinish);
             if (isOnMobile()) {
-                //TODO things here
+                //TODO stuff in the future
             } else {
-                player.addEvent('finish', onFinish);
                 player.api('play');
                 if (firstPlay)
-                player.api('seekTo', settings.startTime);
+                    player.api('seekTo', settings.startTime);
             }
         });
 
@@ -60,12 +60,6 @@
             if (isOnMobile()) {
                 if (firstPlay) {
                     player.api('seekTo', settings.startTime);
-                    firstPlay = false;
-                }
-                if (data.duration - data.seconds < 2) {
-                    currentVideo++;
-                    iframe.attr('src', videos[currentVideo % videos.length]);
-                    player.api('seekTo', 0);
                     firstPlay = false;
                 }
             }
