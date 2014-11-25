@@ -30,18 +30,23 @@
 
         player.addEvent('ready', function() {
             player.addEvent('pause', onPause);
-            player.addEvent('finish', onFinish);
             player.addEvent('playProgress', onPlayProgress);
-            if (! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $('.play').click(function() {
+                player.api('play');
+            });
+            if (isOnMobile()) {
+                //TODO things here
+            } else {
+                player.addEvent('finish', onFinish);
                 player.api('play');
                 if (firstPlay)
-                    player.api('seekTo', settings.startTime);
+                player.api('seekTo', settings.startTime);
             }
         });
 
-        $('button').bind('click', function() {
-            player.api($(this).text().toLowerCase());
-        });
+        function isOnMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
 
         function onPause(id) {
 
@@ -55,7 +60,18 @@
         }
 
         function onPlayProgress(data, id) {
-
+            if (isOnMobile()) {
+                if (firstPlay) {
+                    player.api('seekTo', settings.startTime);
+                    firstPlay = false;
+                }
+                if (data.duration - data.seconds < 2) {
+                    currentVideo++;
+                    iframe.attr('src', videos[currentVideo % videos.length]);
+                    player.api('seekTo', 0);
+                    firstPlay = false;
+                }
+            }
         }
 
         return this;
