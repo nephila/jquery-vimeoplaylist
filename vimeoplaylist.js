@@ -31,9 +31,6 @@
         player.addEvent('ready', function() {
             player.addEvent('pause', onPause);
             player.addEvent('playProgress', onPlayProgress);
-            $('.play').click(function() {
-                player.api('play');
-            });
             if (isOnMobile()) {
                 //TODO things here
             } else {
