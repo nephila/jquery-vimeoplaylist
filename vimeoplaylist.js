@@ -30,18 +30,20 @@
 
         player.addEvent('ready', function() {
             player.addEvent('pause', onPause);
-            player.addEvent('finish', onFinish);
             player.addEvent('playProgress', onPlayProgress);
-            if (! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            player.addEvent('finish', onFinish);
+            if (isOnMobile()) {
+                //TODO stuff in the future
+            } else {
                 player.api('play');
                 if (firstPlay)
                     player.api('seekTo', settings.startTime);
             }
         });
 
-        $('button').bind('click', function() {
-            player.api($(this).text().toLowerCase());
-        });
+        function isOnMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
 
         function onPause(id) {
 
@@ -55,7 +57,12 @@
         }
 
         function onPlayProgress(data, id) {
-
+            if (isOnMobile()) {
+                if (firstPlay) {
+                    player.api('seekTo', settings.startTime);
+                    firstPlay = false;
+                }
+            }
         }
 
         return this;
