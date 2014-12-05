@@ -8,7 +8,9 @@
         var settings = $.extend({
             startFrom: 0,
             startTime: 0,
-            player: $('#player1')
+            player: $('#player1'),
+            onVideoFinish : function(videoIndex) {},
+            onVideoStart: function(videoIndex) {},
         }, options );
 
         $(this).hide();
@@ -19,7 +21,6 @@
         });
 
         var currentVideo = settings.startFrom;
-
         if (currentVideo >= videos.length)
             currentVideo = videos.length - 1;
 
@@ -38,6 +39,7 @@
                 player.api('play');
                 if (firstPlay)
                     player.api('seekTo', settings.startTime);
+                settings.onVideoStart.call(this, currentVideo % videos.length);
             }
         });
 
@@ -50,15 +52,16 @@
         }
 
         function onFinish(id) {
+            settings.onVideoFinish.call(this, currentVideo % videos.length);
             currentVideo++;
             iframe.attr('src', videos[currentVideo % videos.length]);
-            console.log('finish');
             firstPlay = false;
         }
 
         function onPlayProgress(data, id) {
             if (isOnMobile()) {
                 if (firstPlay) {
+                    settings.onVideoStart.call(this, currentVideo % videos.length);
                     player.api('seekTo', settings.startTime);
                     firstPlay = false;
                 }

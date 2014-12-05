@@ -21,7 +21,13 @@
             $('#almaplaylist').vimeoplaylist({
                 startFrom : 1,
                 startTime : 12,
-                player: $('#player2')
+                player: $('#player2'),
+                onVideoStart: function(videoIndex) {
+                    console.log(videoIndex);
+                },
+                onVideoFinish: function(videoIndex) {
+                    console.log(videoIndex);
+                },
             });
         </script>
     </body>
