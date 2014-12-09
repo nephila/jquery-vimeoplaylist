@@ -14,6 +14,12 @@
             <li>240975</li>
         </ul>
 
+        <ul id='palimpsest'>
+            <li>Video 1</li>
+            <li>Video 2</li>
+        </ul>
+
+
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="froogaloop2.min.js"></script>
         <script src="vimeoplaylist.js"></script>
@@ -23,9 +29,11 @@
                 startTime : 12,
                 player: $('#player2'),
                 onVideoStart: function(videoIndex) {
+                    $('#palimpsest li').eq(videoIndex).css("font-weight", "bold");
                     console.log(videoIndex);
                 },
                 onVideoFinish: function(videoIndex) {
+                    $('#palimpsest li').eq(videoIndex).css("font-weight", "normal");
                     console.log(videoIndex);
                 },
             });
