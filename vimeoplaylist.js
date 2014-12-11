@@ -70,6 +70,13 @@
             }
         }
 
+        this.startVideo = function (index) {
+            settings.onVideoFinish.call(this, currentVideo % videos.length);
+            currentVideo = index;
+            iframe.attr('src', videos[index % videos.length]);
+            firstPlay = false;
+        }
+
         return this;
 
     };

@@ -10,15 +10,15 @@
         <iframe id="player2" width="630" height="354" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
         <ul id='palimpsest'>
-            <li>Video 1</li>
-            <li>Video 2</li>
+            <li onClick='skipToVideo(0);'>Video 1</li>
+            <li onClick='skipToVideo(1);'>Video 2</li>
         </ul>
 
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="froogaloop2.min.js"></script>
         <script src="vimeoplaylist.js"></script>
         <script type="text/javascript">
-            $('#player2').vimeoplaylist({
+            var player = $('#player2').vimeoplaylist({
                 startFrom : 1,
                 startTime : 12,
                 volume : 0.0,
@@ -32,6 +32,10 @@
                     console.log(videoIndex);
                 },
             });
+
+            function skipToVideo(index) {
+                player.startVideo(index);
+            }
         </script>
     </body>
 </html>
