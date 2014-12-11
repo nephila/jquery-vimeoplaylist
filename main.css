@@ -28,3 +28,7 @@ p {
   display: inline-block;
   margin-left: 10px;
 }
+
+li:hover, li:focus {
+  cursor: pointer; cursor: hand;
+}
