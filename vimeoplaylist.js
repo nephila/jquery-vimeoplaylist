@@ -9,6 +9,7 @@
             startFrom: 0,
             startTime: 0,
             videoList: [],
+            volume : -1,
             onVideoFinish : function(videoIndex) {},
             onVideoStart: function(videoIndex) {},
         }, options );
@@ -31,6 +32,9 @@
             player.addEvent('pause', onPause);
             player.addEvent('playProgress', onPlayProgress);
             player.addEvent('finish', onFinish);
+            if (settings.volume != -1) {
+                player.api('setVolume', settings.volume);
+            }
             if (isOnMobile()) {
                 //TODO stuff in the future
             } else {

@@ -21,6 +21,7 @@
             $('#player2').vimeoplaylist({
                 startFrom : 1,
                 startTime : 12,
+                volume : 0.0,
                 videoList : [{'vimeoid' : '7100569'}, {'vimeoid' : '240975'}],
                 onVideoStart: function(videoIndex) {
                     $('#palimpsest li').eq(videoIndex).css("font-weight", "bold");
