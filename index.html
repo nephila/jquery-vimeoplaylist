@@ -9,25 +9,19 @@
 
         <iframe id="player2" width="630" height="354" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-        <ul id='almaplaylist'>
-            <li>7100569</li>
-            <li>240975</li>
-        </ul>
-
         <ul id='palimpsest'>
             <li>Video 1</li>
             <li>Video 2</li>
         </ul>
 
-
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="froogaloop2.min.js"></script>
         <script src="vimeoplaylist.js"></script>
         <script type="text/javascript">
-            $('#almaplaylist').vimeoplaylist({
+            $('#player2').vimeoplaylist({
                 startFrom : 1,
                 startTime : 12,
-                player: $('#player2'),
+                videoList : [{'vimeoid' : '7100569'}, {'vimeoid' : '240975'}],
                 onVideoStart: function(videoIndex) {
                     $('#palimpsest li').eq(videoIndex).css("font-weight", "bold");
                     console.log(videoIndex);

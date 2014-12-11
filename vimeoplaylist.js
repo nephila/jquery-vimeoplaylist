@@ -8,25 +8,23 @@
         var settings = $.extend({
             startFrom: 0,
             startTime: 0,
-            player: $('#player1'),
+            videoList: [],
             onVideoFinish : function(videoIndex) {},
             onVideoStart: function(videoIndex) {},
         }, options );
 
-        $(this).hide();
-
-        $(this.selector + ' li').each(function(){
-            videos.push('//player.vimeo.com/video/' + $(this).text() + '?api=1&player_id=' +
-                settings.player.selector.replace('#', ''));
-        });
+        for(i = 0 ; i < settings.videoList.length ; i++) {
+            videos.push('//player.vimeo.com/video/' + settings.videoList[i]['vimeoid'] + '?api=1&player_id=' +
+                this.selector.replace('#', ''));
+        }
 
         var currentVideo = settings.startFrom;
         if (currentVideo >= videos.length)
             currentVideo = videos.length - 1;
 
-        var iframe = settings.player;
+        var iframe = $(this.selector);
         iframe.attr('src', videos[currentVideo % videos.length]);
-        var iframe2 = settings.player[0];
+        var iframe2 = $(this.selector)[0];
         var player = $f(iframe2);
 
         player.addEvent('ready', function() {
