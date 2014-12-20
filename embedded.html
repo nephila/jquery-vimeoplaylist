@@ -6,6 +6,7 @@
         <link href="main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <iframe id="playervimeo" width="630" height="354"  src="http://0.0.0.0:8000" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe id="playervimeo" width="630" height="354" onload="var iframe=this;if(iframe.src.indexOf('height')==-1){var baseurl='http://alma.uff.nephila.it/it/almatv/widget/?';iframe.src=baseurl+'height='+iframe.height+'&width='+iframe.width}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+        </iframe>
     </body>
 </html>
