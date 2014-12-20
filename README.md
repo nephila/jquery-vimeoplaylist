@@ -7,7 +7,9 @@ Parameters
 - startFrom: the video index to start from. (default 0)
 - startTime: start from the specified point (in seconds) in the first video. (default 0)
 - volume: player initial volume.
-- videoList: you can specify your video ids using a list of vimeo ids
+- videoList: your video ids.
+
+Parameter videoList can be definend using a list of vimeo ids:
 
     videoList:['vimeo_id1', 'vimeo_id2'],
 
