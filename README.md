@@ -6,7 +6,8 @@ Parameters
 ----------
 - startFrom: the video index to start from. (default 0)
 - startTime: start from the specified point (in seconds) in the first video. (default 0)
-- player: player element. (default $('#player1'))
+- volume: player initial volume.
+- videoList: list of videos {'vimeoid' : 'id_video'}
 
 Events
 ------
@@ -15,19 +16,13 @@ Events
 
 Usage
 -----
-Define a simple playlist containing vimeo video ids
-
-    <ul id='myplaylist'>
-        <li>7100569</li>
-        <li>240975</li>
-    </ul>
-
 Now you can use VimeoPlaylist plugin
 
-    $('#myplaylist').vimeoplaylist({
+    $('#player2').vimeoplaylist({
         startFrom : 1,
         startTime : 12,
-        player: $('#player2'),
+        volume : 0.0,
+        videoList : [{'vimeoid' : '7100569'}, {'vimeoid' : '240975'}],
         onVideoStart: function(videoIndex) {
             console.log(videoIndex);
         },
@@ -38,5 +33,4 @@ Now you can use VimeoPlaylist plugin
 
 Dependencies
 ------------
-- Jquery
 - Froogaloop 2.0
