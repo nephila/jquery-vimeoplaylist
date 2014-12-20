@@ -78,3 +78,27 @@ test( "test onVideoStart call", function( assert ) {
         },
     });
 });
+
+test( "test use structured playlist", function( assert ) {
+    generateTestPlayer('player6');
+    var player = $('#player6').vimeoplaylist({
+        startFrom : 0,
+        startTime : 12,
+        videoList : [{'vimeoid' : '7100569'}],
+    });
+
+    var expectedSrc = '//player.vimeo.com/video/' + '7100569' + '?api=1&player_id=' + 'player6';
+    assert.equal($('#player6').attr('src'), expectedSrc, 'Default volume should remain -1 after start');
+});
+
+test( "test use list playlist", function( assert ) {
+    generateTestPlayer('player6');
+    var player = $('#player6').vimeoplaylist({
+        startFrom : 0,
+        startTime : 12,
+        videoList : ['7100569'],
+    });
+
+    var expectedSrc = '//player.vimeo.com/video/' + '7100569' + '?api=1&player_id=' + 'player6';
+    assert.equal($('#player6').attr('src'), expectedSrc, 'Default volume should remain -1 after start');
+});

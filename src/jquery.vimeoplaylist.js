@@ -16,10 +16,14 @@
         }, options );
 
         this.settings = settings;
-
+        var videoid = ''
         for(i = 0 ; i < settings.videoList.length ; i++) {
-            videos.push('//player.vimeo.com/video/' + settings.videoList[i]['vimeoid'] + '?api=1&player_id=' +
-                this.selector.replace('#', ''));
+            if(settings.videoList[i].hasOwnProperty('vimeoid')) {
+                videoid = settings.videoList[i]['vimeoid'];
+            } else {
+                videoid = settings.videoList[i];
+            }
+            videos.push('//player.vimeo.com/video/' + videoid + '?api=1&player_id=' + this.selector.replace('#', ''));
         }
 
         var currentVideo = settings.startFrom;
