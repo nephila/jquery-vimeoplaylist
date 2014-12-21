@@ -1,5 +1,5 @@
-VimeoPlaylist
-=============
+jquery.vimeoplaylist
+====================
 Create your playlist with Vimeo.
 
 Parameters
@@ -27,7 +27,6 @@ Events
 
 Usage
 -----
-Now you can use VimeoPlaylist plugin
 
     $('#player2').vimeoplaylist({
         startFrom : 1,
