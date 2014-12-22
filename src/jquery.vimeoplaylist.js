@@ -84,6 +84,10 @@
             firstPlay = false;
         }
 
+        this.getPlayer = function () {
+            return player;
+        }
+
         return this;
 
     };
