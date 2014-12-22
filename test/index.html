@@ -7,6 +7,29 @@
         <script src="http://code.jquery.com/qunit/qunit-1.16.0.js"></script>
         <script src="../lib/jquery-2.1.1.min.js"></script>
         <script src="../lib/froogaloop2.min.js"></script>
+
+        <script type="text/javascript">
+            var MockFroogaloop = function() {
+                this.events = {};
+            };
+
+            MockFroogaloop.prototype.addEvent = function(event, callback){
+                this.events[event] = callback;
+            };
+
+            MockFroogaloop.prototype.callEvent = function(event){
+                this.events[event]();
+            };
+
+            MockFroogaloop.prototype.api = function(api, parameter){
+            };
+
+
+            $f = function(element) {
+                return new MockFroogaloop();
+            };
+        </script>
+
         <script src="../src/jquery.vimeoplaylist.js"></script>
         <script src="tests.js"></script>
     </head>

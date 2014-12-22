@@ -26,6 +26,9 @@ test( "test video switch", function( assert ) {
             doneVideo0();
         },
     });
+    player.getPlayer().callEvent('ready');
+    player.getPlayer().callEvent('finish');
+    player.getPlayer().callEvent('ready');
 });
 
 test( "test onVideoFinish call", function( assert ) {
@@ -40,6 +43,8 @@ test( "test onVideoFinish call", function( assert ) {
             done();
         },
     });
+    player.getPlayer().callEvent('ready');
+    player.getPlayer().callEvent('finish');
 });
 
 test( "init test", function( assert ) {
@@ -63,6 +68,7 @@ test( "volume test default", function( assert ) {
             done();
         },
     });
+    player.getPlayer().callEvent('ready');
 });
 
 test( "test onVideoStart call", function( assert ) {
@@ -77,6 +83,7 @@ test( "test onVideoStart call", function( assert ) {
             done();
         },
     });
+    player.getPlayer().callEvent('ready');
 });
 
 test( "test use structured playlist", function( assert ) {
@@ -88,7 +95,7 @@ test( "test use structured playlist", function( assert ) {
     });
 
     var expectedSrc = '//player.vimeo.com/video/' + '7100569' + '?api=1&player_id=' + 'player6';
-    assert.equal($('#player6').attr('src'), expectedSrc, 'Default volume should remain -1 after start');
+    assert.equal($('#player6').attr('src'), expectedSrc, 'Video source should change');
 });
 
 test( "test use list playlist", function( assert ) {
@@ -100,5 +107,5 @@ test( "test use list playlist", function( assert ) {
     });
 
     var expectedSrc = '//player.vimeo.com/video/' + '7100569' + '?api=1&player_id=' + 'player6';
-    assert.equal($('#player6').attr('src'), expectedSrc, 'Default volume should remain -1 after start');
+    assert.equal($('#player6').attr('src'), expectedSrc, 'Video source should change');
 });
