@@ -2,6 +2,15 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        qunit: {
+            all: {
+                options: {
+                    urls: [
+                      'http://0.0.0.0:8000/test/index.html',
+                    ]
+                }
+            }
+        },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> v<%= pkg.version %> | <%= pkg.license %> */\n'
@@ -21,5 +30,5 @@ module.exports = function (grunt) {
         }
     }
 
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['qunit', 'uglify']);
 };
