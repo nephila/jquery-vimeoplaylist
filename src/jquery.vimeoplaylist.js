@@ -15,7 +15,6 @@
             onVideoStart: function(videoIndex) {},
         }, options );
 
-        this.settings = settings;
         var videoid = ''
         for(i = 0 ; i < settings.videoList.length ; i++) {
             if(settings.videoList[i].hasOwnProperty('vimeoid')) {
@@ -86,6 +85,10 @@
 
         this.getPlayer = function () {
             return player;
+        }
+
+        this.getVolume = function () {
+            return settings.volume;
         }
 
         return this;
