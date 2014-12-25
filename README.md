@@ -1,5 +1,5 @@
-jquery.vimeoplaylist
-====================
+# jquery.vimeoplaylist [![Build Status](https://travis-ci.org/nephila/jquery-vimeoplaylist.png?branch=master)](https://travis-ci.org/nephila/jquery-vimeoplaylist)
+
 Create your playlist with Vimeo.
 
 Parameters
