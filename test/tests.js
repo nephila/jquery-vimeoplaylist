@@ -1,8 +1,28 @@
 module('vimeoplugin');
 
 var generateTestPlayer = function(id) {
-    $('#qunit-fixture').append('<iframe id="' + id + '" width="630" height="354" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+    $('#qunit-fixture').append('<iframe class="player" id="' + id + '" width="630" height="354" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
 }
+
+test( "init test", function( assert ) {
+    generateTestPlayer('player2');
+    var player = $('#player2').vimeoplaylist({
+        startFrom : 1,
+        startTime : 12,
+        videoList : [{'vimeoid' : '7100569'}, {'vimeoid' : '240975'}]});
+    assert.notEqual(player, undefined, 'Plugin should return an object');
+});
+
+test( "init plugin for collection", function( assert ) {
+    generateTestPlayer('player1');
+    generateTestPlayer('player2');
+    var players = $('.player').vimeoplaylist({
+        startFrom : 1,
+        startTime : 90,
+        videoList : [{'vimeoid' : '7100569'}, {'vimeoid' : '240975'}],
+    });
+    assert.equal(players.length, 2, 'Get 2 instances');
+});
 
 test( "test video switch", function( assert ) {
     var skipVideoStart = true;
@@ -45,15 +65,6 @@ test( "test onVideoFinish call", function( assert ) {
     });
     player[0].getPlayer().callEvent('ready');
     player[0].getPlayer().callEvent('finish');
-});
-
-test( "init test", function( assert ) {
-    generateTestPlayer('player2');
-    var player = $('#player2').vimeoplaylist({
-        startFrom : 1,
-        startTime : 12,
-        videoList : [{'vimeoid' : '7100569'}, {'vimeoid' : '240975'}]});
-    assert.notEqual(player, undefined, 'Plugin should return an object');
 });
 
 test( "volume test default", function( assert ) {
