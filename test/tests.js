@@ -26,9 +26,9 @@ test( "test video switch", function( assert ) {
             doneVideo0();
         },
     });
-    player.getPlayer().callEvent('ready');
-    player.getPlayer().callEvent('finish');
-    player.getPlayer().callEvent('ready');
+    player[0].getPlayer().callEvent('ready');
+    player[0].getPlayer().callEvent('finish');
+    player[0].getPlayer().callEvent('ready');
 });
 
 test( "test onVideoFinish call", function( assert ) {
@@ -43,8 +43,8 @@ test( "test onVideoFinish call", function( assert ) {
             done();
         },
     });
-    player.getPlayer().callEvent('ready');
-    player.getPlayer().callEvent('finish');
+    player[0].getPlayer().callEvent('ready');
+    player[0].getPlayer().callEvent('finish');
 });
 
 test( "init test", function( assert ) {
@@ -68,7 +68,8 @@ test( "volume test default", function( assert ) {
             done();
         },
     });
-    player.getPlayer().callEvent('ready');
+
+    player[0].getPlayer().callEvent('ready');
 });
 
 test( "test onVideoStart call", function( assert ) {
@@ -83,7 +84,7 @@ test( "test onVideoStart call", function( assert ) {
             done();
         },
     });
-    player.getPlayer().callEvent('ready');
+    player[0].getPlayer().callEvent('ready');
 });
 
 test( "test use structured playlist", function( assert ) {
