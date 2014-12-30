@@ -1,19 +1,20 @@
 (function ( $ ) {
 
     $.fn.vimeoplaylist = function( options ) {
+
+        var settings = $.extend({
+            startFrom: 0,
+            startTime: 0,
+            videoList: [],
+            volume : -1,
+            onVideoFinish : function(videoIndex) {},
+            onVideoStart: function(videoIndex) {},
+        }, options );
+
         return this.each(function() {
             var videos = [];
             var firstPlay = true;
-            var plugin = this;
-
-            var settings = $.extend({
-                startFrom: 0,
-                startTime: 0,
-                videoList: [],
-                volume : -1,
-                onVideoFinish : function(videoIndex) {},
-                onVideoStart: function(videoIndex) {},
-            }, options );
+            var that = this;
 
             var videoid = ''
             for(i = 0 ; i < settings.videoList.length ; i++) {
@@ -47,7 +48,7 @@
                     player.api('play');
                     if (firstPlay)
                         player.api('seekTo', settings.startTime);
-                    settings.onVideoStart.call(plugin, currentVideo % videos.length);
+                    settings.onVideoStart.call(that, currentVideo % videos.length);
                 }
             });
 
@@ -60,7 +61,7 @@
             }
 
             function onFinish(id) {
-                settings.onVideoFinish.call(plugin, currentVideo % videos.length);
+                settings.onVideoFinish.call(that, currentVideo % videos.length);
                 currentVideo++;
                 iframe.attr('src', videos[currentVideo % videos.length]);
                 firstPlay = false;
@@ -69,7 +70,7 @@
             function onPlayProgress(data, id) {
                 if (isOnMobile()) {
                     if (firstPlay) {
-                        settings.onVideoStart.call(plugin, currentVideo % videos.length);
+                        settings.onVideoStart.call(that, currentVideo % videos.length);
                         player.api('seekTo', settings.startTime);
                         firstPlay = false;
                     }
@@ -77,7 +78,7 @@
             }
 
             this.startVideo = function (index) {
-                settings.onVideoFinish.call(plugin, currentVideo % videos.length);
+                settings.onVideoFinish.call(that, currentVideo % videos.length);
                 currentVideo = index;
                 iframe.attr('src', videos[index % videos.length]);
                 firstPlay = false;
