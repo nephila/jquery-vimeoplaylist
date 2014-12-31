@@ -75,7 +75,7 @@ test( "volume test default", function( assert ) {
         startTime : 12,
         videoList : [{"vimeoid" : "7100569"}, {"vimeoid" : "240975"}],
         onVideoStart: function() {
-            assert.equal(this.getVolume(), -1, "Default volume should remain -1 after start");
+            assert.equal($(this).data("plugin_vimeoplaylist").getVolume(), -1, "Default volume should remain -1 after start");
             done();
         },
     });
