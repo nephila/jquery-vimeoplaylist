@@ -15,6 +15,12 @@ module.exports = function (grunt) {
                 }
             }
         },
+        jshint: {
+            files: ["src/jquery.vimeoplaylist.js"],
+            options: {
+                jshintrc: ".jshintrc"
+            }
+        },
 
     });
 
@@ -24,5 +30,5 @@ module.exports = function (grunt) {
         }
     }
 
-    grunt.registerTask('default', ['qunit', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'qunit', 'uglify']);
 };
