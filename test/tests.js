@@ -121,3 +121,15 @@ test( "test use list playlist", function( assert ) {
     var expectedSrc = '//player.vimeo.com/video/' + '7100569' + '?api=1&player_id=' + 'player6';
     assert.equal($('#player6').attr('src'), expectedSrc, 'Video source should change');
 });
+
+test( "test startVideo call", function( assert ) {
+    generateTestPlayer('player10');
+    var player = $('#player10').vimeoplaylist({
+        startFrom : 0,
+        startTime : 12,
+        videoList : [{'vimeoid' : '7100569'}, {'vimeoid' : '240975'}],
+    });
+    $(player).data('plugin_vimeoplaylist').startVideo(1);
+    var expectedSrc = '//player.vimeo.com/video/' + '240975' + '?api=1&player_id=' + 'player10';
+    assert.equal($('#player10').attr('src'), expectedSrc, 'Video source should change');
+});
