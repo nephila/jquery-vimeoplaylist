@@ -6,8 +6,8 @@
             startTime: 0,
             videoList: [],
             volume : -1,
-            onVideoFinish : function(videoIndex) {},
-            onVideoStart: function(videoIndex) {},
+            onVideoFinish : function() {},
+            onVideoStart: function() {},
         };
 
     function VimeoPlaylist ( element, options ) {
@@ -23,36 +23,37 @@
             var that = this;
             this._videos = [];
             this._firstPlay = true;
-            var videoid = '';
+            var videoid = "";
             for(var i = 0 ; i < this.settings.videoList.length ; i++) {
-                if(this.settings.videoList[i].hasOwnProperty('vimeoid')) {
-                    videoid = this.settings.videoList[i]['vimeoid'];
+                if(this.settings.videoList[i].hasOwnProperty("vimeoid")) {
+                    videoid = this.settings.videoList[i].vimeoid;
                 } else {
                     videoid = this.settings.videoList[i];
                 }
-                this._videos.push('//player.vimeo.com/video/' + videoid + '?api=1&player_id=' + that.element.id);
+                this._videos.push("//player.vimeo.com/video/" + videoid + "?api=1&player_id=" + that.element.id);
             }
             this._currentVideo = this.settings.startFrom;
             if (this._currentVideo >= this._videos.length) {
                 this._currentVideo = this._videos.length - 1;
             }
             this._iframe = $(this.element);
-            this._iframe.attr('src', this._videos[this._currentVideo % this._videos.length]);
+            this._iframe.attr("src", this._videos[this._currentVideo % this._videos.length]);
             this._player = $f($(this.element)[0]);
 
-            this._player.addEvent('ready', function() {
-                that._player.addEvent('pause', onPause);
-                that._player.addEvent('playProgress', onPlayProgress);
-                that._player.addEvent('finish', onFinish);
-                if (that.settings.volume != -1) {
-                    that._player.api('setVolume', that.settings.volume);
+            this._player.addEvent("ready", function() {
+                that._player.addEvent("pause", onPause);
+                that._player.addEvent("playProgress", onPlayProgress);
+                that._player.addEvent("finish", onFinish);
+                if (that.settings.volume !== -1) {
+                    that._player.api("setVolume", that.settings.volume);
                 }
                 if (isOnMobile()) {
                     //TODO stuff in the future
                 } else {
-                    that._player.api('play');
-                    if (that._firstPlay)
-                        that._player.api('seekTo', that.settings.startTime);
+                    that._player.api("play");
+                    if (that._firstPlay) {
+                        that._player.api("seekTo", that.settings.startTime);
+                    }
                     that.settings.onVideoStart.call(that, that._currentVideo % that._videos.length);
                 }
             });
@@ -61,22 +62,21 @@
                 return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             }
 
-            function onPause(id) {
-
+            function onPause() {
             }
 
-            function onFinish(id) {
+            function onFinish() {
                 that.settings.onVideoFinish.call(that, that._currentVideo % that._videos.length);
                 that._currentVideo++;
-                that._iframe.attr('src', that._videos[that._currentVideo % that._videos.length]);
+                that._iframe.attr("src", that._videos[that._currentVideo % that._videos.length]);
                 that._firstPlay = false;
             }
 
-            function onPlayProgress(data, id) {
+            function onPlayProgress() {
                 if (isOnMobile()) {
                     if (that._firstPlay) {
                         that.settings.onVideoStart.call(that, that._currentVideo % that._videos.length);
-                        that._player.api('seekTo', that.settings.startTime);
+                        that._player.api("seekTo", that.settings.startTime);
                         that._firstPlay = false;
                     }
                 }
@@ -87,7 +87,7 @@
         startVideo: function (index) {
             this.settings.onVideoFinish.call(this, this._currentVideo % this._videos.length);
             this._currentVideo = index;
-            this._iframe.attr('src', this._videos[index % this._videos.length]);
+            this._iframe.attr("src", this._videos[index % this._videos.length]);
             this._firstPlay = false;
         },
 
