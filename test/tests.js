@@ -46,9 +46,9 @@ test( "test video switch", function( assert ) {
             doneVideo0();
         },
     });
-    player[0].getPlayer().callEvent('ready');
-    player[0].getPlayer().callEvent('finish');
-    player[0].getPlayer().callEvent('ready');
+    $(player).data('plugin_vimeoplaylist').getPlayer().callEvent('ready');
+    $(player).data('plugin_vimeoplaylist').getPlayer().callEvent('finish');
+    $(player).data('plugin_vimeoplaylist').getPlayer().callEvent('ready');
 });
 
 test( "test onVideoFinish call", function( assert ) {
@@ -63,8 +63,8 @@ test( "test onVideoFinish call", function( assert ) {
             done();
         },
     });
-    player[0].getPlayer().callEvent('ready');
-    player[0].getPlayer().callEvent('finish');
+    $(player).data('plugin_vimeoplaylist').getPlayer().callEvent('ready');
+    $(player).data('plugin_vimeoplaylist').getPlayer().callEvent('finish');
 });
 
 test( "volume test default", function( assert ) {
@@ -80,7 +80,7 @@ test( "volume test default", function( assert ) {
         },
     });
 
-    player[0].getPlayer().callEvent('ready');
+    $(player).data('plugin_vimeoplaylist').getPlayer().callEvent('ready');
 });
 
 test( "test onVideoStart call", function( assert ) {
@@ -95,7 +95,7 @@ test( "test onVideoStart call", function( assert ) {
             done();
         },
     });
-    player[0].getPlayer().callEvent('ready');
+    $(player).data('plugin_vimeoplaylist').getPlayer().callEvent('ready');
 });
 
 test( "test use structured playlist", function( assert ) {
