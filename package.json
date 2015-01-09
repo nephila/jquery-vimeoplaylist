@@ -1,6 +1,6 @@
 {
   "name": "jquery.vimeoplaylist",
-  "version": "0.1.0dev",
+  "version": "0.1.0",
   "author": "Nephila",
   "license": "MIT",
   "devDependencies": {
