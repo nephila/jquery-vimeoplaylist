@@ -33,6 +33,14 @@
                 },
             });
 
+            $('#player2').on('videostart', function(e, videoIndex) {
+                console.log('Start video (fired by event) ' + videoIndex);
+            });
+
+            $('#player2').on('videoend', function(e, videoIndex) {
+                console.log('End video (fired by event) ' + videoIndex);
+            });
+
             function skipToVideo(index) {
                 $(player).data("plugin_vimeoplaylist").startVideo(index);
             }
