@@ -22,8 +22,8 @@ or a list of dictionaries containing 'vimeoid':
 
 Events
 ------
-- onVideoStart(videoIndex): called when the current video starts
-- onVideoFinish(videoIndex): called when the current video ends
+- 'videostart'(videoIndex): triggered when the current video starts
+- 'videoend'(videoIndex): triggered when the current video ends
 
 Usage
 -----
@@ -33,12 +33,14 @@ Usage
         startTime : 12,
         volume : 0.0,
         videoList : ['7100569', '240975'],
-        onVideoStart: function(videoIndex) {
-            console.log(videoIndex);
-        },
-        onVideoFinish: function(videoIndex) {
-            console.log(videoIndex);
-        },
+    });
+
+    $('#player2').on('videostart', function(e, videoIndex) {
+        console.log('Start ' + videoIndex);
+    });
+
+    $('#player2').on('videoend', function(e, videoIndex) {
+        console.log('End ' + videoIndex);
     });
 
 Dependencies

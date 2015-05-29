@@ -23,21 +23,15 @@
                 startTime : 12,
                 volume : 0.0,
                 videoList : ['7100569', '240975'],
-                onVideoStart: function(videoIndex) {
-                    $('#palimpsest li').eq(videoIndex).css("font-weight", "bold");
-                    console.log(videoIndex);
-                },
-                onVideoFinish: function(videoIndex) {
-                    $('#palimpsest li').eq(videoIndex).css("font-weight", "normal");
-                    console.log(videoIndex);
-                },
             });
 
             $('#player2').on('videostart', function(e, videoIndex) {
+                $('#palimpsest li').eq(videoIndex).css("font-weight", "bold");
                 console.log('Start video (fired by event) ' + videoIndex);
             });
 
             $('#player2').on('videoend', function(e, videoIndex) {
+                $('#palimpsest li').eq(videoIndex).css("font-weight", "normal");
                 console.log('End video (fired by event) ' + videoIndex);
             });
 
