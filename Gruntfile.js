@@ -11,15 +11,21 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'build/jquery.vimeoplaylist-<%= pkg.version %>.min.js': 'src/jquery.vimeoplaylist.js'
+                    'dist/<%= pkg.name %>.min.js': 'src/jquery.vimeoplaylist.js'
                 }
             }
         },
         jshint: {
-            files: ["src/jquery.vimeoplaylist.js"],
+            files: ["src/<%= pkg.name %>.js"],
             options: {
                 jshintrc: ".jshintrc"
             }
+        },
+        copy: {
+            main: {
+                src: 'src/jquery.vimeoplaylist.js',
+                dest: 'dist/jquery.vimeoplaylist.js',
+            },
         },
 
     });
@@ -30,5 +36,5 @@ module.exports = function (grunt) {
         }
     }
 
-    grunt.registerTask('default', ['jshint', 'qunit', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'qunit', 'uglify', 'copy']);
 };
