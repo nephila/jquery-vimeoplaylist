@@ -54,6 +54,7 @@
                     if (that._firstPlay) {
                         that._player.api("seekTo", that.settings.startTime);
                     }
+                    $(that.element).trigger("videostart", that._currentVideo % that._videos.length);
                     that.settings.onVideoStart.call(that.element, that._currentVideo % that._videos.length);
                 }
             });
@@ -66,6 +67,7 @@
             }
 
             function onFinish() {
+                $(that.element).trigger("videoend", that._currentVideo % that._videos.length);
                 that.settings.onVideoFinish.call(that.element, that._currentVideo % that._videos.length);
                 that._currentVideo++;
                 that._iframe.attr("src", that._videos[that._currentVideo % that._videos.length]);
@@ -75,6 +77,7 @@
             function onPlayProgress() {
                 if (isOnMobile()) {
                     if (that._firstPlay) {
+                        $(that.element).trigger("videostart", that._currentVideo % that._videos.length);
                         that.settings.onVideoStart.call(that.element, that._currentVideo % that._videos.length);
                         that._player.api("seekTo", that.settings.startTime);
                         that._firstPlay = false;
@@ -85,6 +88,7 @@
         },
 
         startVideo: function (index) {
+            $(this.element).trigger("videoend", this._currentVideo % this._videos.length);
             this.settings.onVideoFinish.call(this.element, this._currentVideo % this._videos.length);
             this._currentVideo = index;
             this._iframe.attr("src", this._videos[index % this._videos.length]);
