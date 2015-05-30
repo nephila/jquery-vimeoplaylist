@@ -1,8 +1,19 @@
 {
   "name": "jquery.vimeoplaylist",
-  "version": "0.1.0",
+  "description": "jQuery plugin for creating your playlists with Vimeo.",
+  "version": "0.2.0",
   "author": "Nephila",
   "license": "MIT",
+  "files": [
+    "dist/froogaloop2.min.js",
+    "dist/jquery.vimeoplaylist.js",
+    "dist/jquery.vimeoplaylist.min.js"
+  ],
+  "main": "dist/jquery.vimeoplaylist.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nephila/jquery-vimeoplaylist.git"
+  },
   "devDependencies": {
     "grunt": "~0.4.0",
     "grunt-contrib-copy": "^0.8.0",
@@ -10,5 +21,14 @@
     "grunt-contrib-qunit": "~0.5.2",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-serve": "^0.1.6"
-  }
+  },
+  "dependencies": {
+    "jquery": ">= 1.7"
+  },
+  "keywords": [
+    "jquery",
+    "plugin",
+    "vimeo",
+    "playlist"
+  ]
 }

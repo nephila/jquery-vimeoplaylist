@@ -54,8 +54,15 @@
                     if (that._firstPlay) {
                         that._player.api("seekTo", that.settings.startTime);
                     }
-                    $(that.element).trigger("videostart", that._currentVideo % that._videos.length);
-                    that.settings.onVideoStart.call(that.element, that._currentVideo % that._videos.length);
+                    var videoIndex = that._currentVideo % that._videos.length;
+                    $(that.element).trigger(
+                        "videostart",
+                        [videoIndex, that.settings.videoList[videoIndex]]
+                    );
+                    that.settings.onVideoStart.call(
+                        that.element, videoIndex,
+                        that.settings.videoList[videoIndex]
+                    );
                 }
             });
 
@@ -67,8 +74,15 @@
             }
 
             function onFinish() {
-                $(that.element).trigger("videoend", that._currentVideo % that._videos.length);
-                that.settings.onVideoFinish.call(that.element, that._currentVideo % that._videos.length);
+                var videoIndex = that._currentVideo % that._videos.length;
+                $(that.element).trigger(
+                    "videoend",
+                    [videoIndex, that.settings.videoList[videoIndex]]
+                );
+                that.settings.onVideoFinish.call(
+                    that.element, videoIndex,
+                    that.settings.videoList[videoIndex]
+                );
                 that._currentVideo++;
                 that._iframe.attr("src", that._videos[that._currentVideo % that._videos.length]);
                 that._firstPlay = false;
@@ -77,8 +91,15 @@
             function onPlayProgress() {
                 if (isOnMobile()) {
                     if (that._firstPlay) {
-                        $(that.element).trigger("videostart", that._currentVideo % that._videos.length);
-                        that.settings.onVideoStart.call(that.element, that._currentVideo % that._videos.length);
+                        var videoIndex = that._currentVideo % that._videos.length;
+                        $(that.element).trigger(
+                            "videostart",
+                            [videoIndex, that.settings.videoList[videoIndex]]
+                        );
+                        that.settings.onVideoStart.call(
+                            that.element, videoIndex,
+                            that.settings.videoList[videoIndex]
+                        );
                         that._player.api("seekTo", that.settings.startTime);
                         that._firstPlay = false;
                     }
@@ -88,8 +109,15 @@
         },
 
         startVideo: function (index) {
-            $(this.element).trigger("videoend", this._currentVideo % this._videos.length);
-            this.settings.onVideoFinish.call(this.element, this._currentVideo % this._videos.length);
+            var videoIndex = this._currentVideo % this._videos.length;
+            $(this.element).trigger(
+                "videoend",
+                [videoIndex, this.settings.videoList[videoIndex]]
+            );
+            this.settings.onVideoFinish.call(
+                this.element, videoIndex,
+                this.settings.videoList[videoIndex]
+            );
             this._currentVideo = index;
             this._iframe.attr("src", this._videos[index % this._videos.length]);
             this._firstPlay = false;

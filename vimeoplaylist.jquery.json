@@ -1,13 +1,13 @@
 {
     "name": "vimeoplaylist",
     "title": "jQuery Vimeo Playlist Plugin",
-    "description": "jQuery plugin for creating your playlist with Vimeo.",
+    "description": "jQuery plugin for creating your playlists with Vimeo.",
     "keywords": [
         "vimeo",
         "playlist",
         "video"
     ],
-    "version": "0.1.0",
+    "version": "0.2.0",
     "author": {
         "name": "Nephila"
     },
@@ -28,7 +28,6 @@
     "homepage": "https://github.com/nephila/jquery-vimeoplaylist",
     "download": "https://github.com/nephila/jquery-vimeoplaylist",
     "dependencies": {
-        "jquery": ">=1.4.4",
-        "froogaloop": ">=2"
+        "jquery": ">=1.7"
     }
 }

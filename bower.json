@@ -1,0 +1,29 @@
+{
+  "name": "jquery.vimeoplaylist",
+  "version": "0.2.0",
+  "homepage": "https://github.com/nephila/jquery-vimeoplaylist",
+  "authors": [
+    "Andrea Stagi <stagi.andrea@gmail.com>"
+  ],
+  "description": "jQuery plugin for creating your playlists with Vimeo.",
+  "main": "dist/jquery.vimeoplaylist.js",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "vimeo",
+    "playlist"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "build",
+    "test",
+    "*.md",
+    "Gruntfile.js",
+    "*.json",
+    "index.html"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.7"
+  }
+}
