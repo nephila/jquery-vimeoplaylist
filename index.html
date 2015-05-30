@@ -6,7 +6,7 @@
     <body>
 
         <h1>jQuery Vimeoplaylist plugin</h1>
-        <h2>Create your playlists with Vimeo (Run this demo on locahost).</h2>
+        <h2>Create your playlists with Vimeo (Run this demo on localhost).</h2>
 
         <iframe id="player2" width="630" height="354" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -17,7 +17,7 @@
 
         <script src="lib/jquery-2.1.1.min.js"></script>
         <script src="dist/froogaloop2.min.js"></script>
-        <script src="dist/jquery.vimeoplaylist.js"></script>
+        <script src="src/jquery.vimeoplaylist.js"></script>
         <script type="text/javascript">
 
             var palimpsest = [
@@ -32,14 +32,14 @@
                 videoList : palimpsest,
             });
 
-            $('#player2').on('videostart', function(e, videoIndex) {
+            $('#player2').on('videostart', function(e, videoIndex, videoInfo) {
                 $('#palimpsest li').eq(videoIndex).css("font-weight", "bold");
-                console.log('Start video (fired by event) ' + videoIndex);
+                console.log('Start video: ' + videoInfo.title);
             });
 
-            $('#player2').on('videoend', function(e, videoIndex) {
+            $('#player2').on('videoend', function(e, videoIndex, videoInfo) {
                 $('#palimpsest li').eq(videoIndex).css("font-weight", "normal");
-                console.log('End video (fired by event) ' + videoIndex);
+                console.log('End video: ' + videoInfo.title);
             });
 
             function skipToVideo(index) {
