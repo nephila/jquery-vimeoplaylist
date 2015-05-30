@@ -2,21 +2,20 @@
 
 Create your playlist with Vimeo.
 
-Install
--------
+## Install
+You can install with [bower](http://bower.io/) or [npm](https://www.npmjs.com/).
 
-    TODO
+    $ bower install jquery.vimeoplaylist
+    $ npm install jquery.vimeoplaylist
 
-Try it!
--------
+## Try it!
 Run
 
     grunt serve
 
 Then open http://localhost:8123/index.html
 
-Parameters
-----------
+## Parameters
 - startFrom: the video index to start from. (default 0)
 - startTime: start from the specified point (in seconds) in the first video. (default 0)
 - volume: player initial volume.
@@ -33,13 +32,11 @@ or a list of dictionaries containing 'vimeoid':
         {'vimeoid' : 'id_video2', 'title': 'My second video'}
     ],
 
-Events
-------
+## Events
 - 'videostart'(videoIndex): triggered when the current video starts
 - 'videoend'(videoIndex): triggered when the current video ends
 
-Usage
------
+## Usage
 
     $('#player2').vimeoplaylist({
         startFrom : 1,
@@ -56,6 +53,5 @@ Usage
         console.log('End ' + videoIndex);
     });
 
-Dependencies
-------------
+## Dependencies
 - Froogaloop 2.0
