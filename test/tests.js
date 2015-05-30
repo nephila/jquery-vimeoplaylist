@@ -57,9 +57,13 @@ test( "test onVideoFinish call", function( assert ) {
     var player = $("#player1").vimeoplaylist({
         startFrom : 1,
         startTime : 90,
-        videoList : [{"vimeoid" : "7100569"}, {"vimeoid" : "240975"}],
-        onVideoFinish: function(videoIndex) {
+        videoList : [
+            {"vimeoid" : "7100569", "title": "Title 1"},
+            {"vimeoid" : "240975", "title": "Title 2"}
+        ],
+        onVideoFinish: function(videoIndex, videoInfo) {
             assert.equal(videoIndex, 1, "Finish second video");
+            assert.equal(videoInfo.title, "Title 2", "Get second video's title");
             done();
         },
     });
@@ -89,9 +93,13 @@ test( "test onVideoStart call", function( assert ) {
     var player = $("#player4").vimeoplaylist({
         startFrom : 1,
         startTime : 12,
-        videoList : [{"vimeoid" : "7100569"}, {"vimeoid" : "240975"}],
-        onVideoStart: function(videoIndex) {
+        videoList : [
+            {"vimeoid" : "7100569", "title": "Title 1"},
+            {"vimeoid" : "240975", "title": "Title 2"}
+        ],
+        onVideoStart: function(videoIndex, videoInfo) {
             assert.equal(videoIndex, 1, "Start second video");
+            assert.equal(videoInfo.title, "Title 2", "Get second video's title");
             done();
         },
     });
@@ -132,4 +140,44 @@ test( "test startVideo call", function( assert ) {
     $(player).data("plugin_vimeoplaylist").startVideo(1);
     var expectedSrc = "//player.vimeo.com/video/" + "240975" + "?api=1&player_id=" + "player10";
     assert.equal($("#player10").attr("src"), expectedSrc, "Video source should change");
+});
+
+test( "test on('videoend') call", function( assert ) {
+    generateTestPlayer("player11");
+    var done = assert.async();
+    var player = $("#player11").vimeoplaylist({
+        startFrom : 1,
+        startTime : 90,
+        videoList : [
+            {"vimeoid" : "7100569", "title": "Title 1"},
+            {"vimeoid" : "240975", "title": "Title 2"}
+        ],
+    });
+
+    $('#player11').on('videoend', function(e, videoIndex, videoInfo) {
+        assert.equal(videoIndex, 1, "Finish second video");
+        assert.equal(videoInfo.title, "Title 2", "Get second video's title");
+        done();
+    });
+    $(player).data("plugin_vimeoplaylist").getPlayer().callEvent("ready");
+    $(player).data("plugin_vimeoplaylist").getPlayer().callEvent("finish");
+});
+
+test( "test on('videostart') call", function( assert ) {
+    generateTestPlayer("player12");
+    var done = assert.async();
+    var player = $("#player12").vimeoplaylist({
+        startFrom : 1,
+        startTime : 12,
+        videoList : [
+            {"vimeoid" : "7100569", "title": "Title 1"},
+            {"vimeoid" : "240975", "title": "Title 2"}
+        ],
+    });
+    $('#player12').on('videostart', function(e, videoIndex, videoInfo) {
+        assert.equal(videoIndex, 1, "Start second video");
+        assert.equal(videoInfo.title, "Title 2", "Get second video's title");
+        done();
+    });
+    $(player).data("plugin_vimeoplaylist").getPlayer().callEvent("ready");
 });
