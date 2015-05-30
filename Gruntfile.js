@@ -27,6 +27,11 @@ module.exports = function (grunt) {
                 dest: 'dist/jquery.vimeoplaylist.js',
             },
         },
+        serve: {
+            options: {
+                port: 8123
+            }
+        },
 
     });
 

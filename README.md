@@ -2,6 +2,19 @@
 
 Create your playlist with Vimeo.
 
+Install
+-------
+
+    TODO
+
+Try it!
+-------
+Run
+
+    grunt serve
+
+Then open http://localhost:8123/index.html
+
 Parameters
 ----------
 - startFrom: the video index to start from. (default 0)
@@ -16,8 +29,8 @@ Parameter videoList can be definend using a list of vimeo ids:
 or a list of dictionaries containing 'vimeoid':
 
     videoList:[
-        {'vimeoid' : 'id_video1', 'name', 'My first video'},
-        {'vimeoid' : 'id_video2', 'name', 'My second video'}
+        {'vimeoid' : 'id_video1', 'title': 'My first video'},
+        {'vimeoid' : 'id_video2', 'title': 'My second video'}
     ],
 
 Events
