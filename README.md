@@ -1,4 +1,4 @@
-# jquery.vimeoplaylist 
+# jquery.vimeoplaylist
 
 [![Build Status](https://travis-ci.org/nephila/jquery-vimeoplaylist.png?branch=master)](https://travis-ci.org/nephila/jquery-vimeoplaylist)
 ![Bower version](https://img.shields.io/bower/v/jquery.vimeoplaylist.svg)
@@ -37,8 +37,8 @@ or a list of dictionaries containing 'vimeoid':
     ],
 
 ## Events
-- 'videostart'(videoIndex): triggered when the current video starts
-- 'videoend'(videoIndex): triggered when the current video ends
+- 'videostart'(videoIndex, videoInfo): triggered when the current video starts
+- 'videoend'(videoIndex, videoInfo): triggered when the current video ends
 
 ## Usage
 
