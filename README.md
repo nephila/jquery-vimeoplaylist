@@ -1,6 +1,10 @@
-# jquery.vimeoplaylist [![Build Status](https://travis-ci.org/nephila/jquery-vimeoplaylist.png?branch=master)](https://travis-ci.org/nephila/jquery-vimeoplaylist)
+# jquery.vimeoplaylist 
 
-Create your playlist with Vimeo.
+[![Build Status](https://travis-ci.org/nephila/jquery-vimeoplaylist.png?branch=master)](https://travis-ci.org/nephila/jquery-vimeoplaylist)
+![Bower version](https://img.shields.io/bower/v/jquery.vimeoplaylist.svg)
+[![npm version](https://img.shields.io/npm/v/jquery.vimeoplaylist.svg)](https://www.npmjs.com/package/jquery.vimeoplaylist)
+
+Create your playlists with Vimeo.
 
 ## Install
 You can install with [bower](http://bower.io/) or [npm](https://www.npmjs.com/).
@@ -52,6 +56,3 @@ or a list of dictionaries containing 'vimeoid':
     $('#player2').on('videoend', function(e, videoIndex) {
         console.log('End ' + videoIndex);
     });
-
-## Dependencies
-- Froogaloop 2.0
