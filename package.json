@@ -1,7 +1,7 @@
 {
   "name": "jquery.vimeoplaylist",
   "description": "jQuery plugin for creating your playlists with Vimeo.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Nephila",
   "license": "MIT",
   "files": [
